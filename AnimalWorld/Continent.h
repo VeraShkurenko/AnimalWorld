@@ -21,3 +21,4 @@ public:
     const vector<unique_ptr<Herbivore>>& GetHerbivores() const;
     const vector<unique_ptr<Carnivore>>& GetCarnivores() const;
 };
+

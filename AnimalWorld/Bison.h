@@ -7,3 +7,4 @@ public:
     Bison(int weight, bool life);
     void EatGrass() override;
 };
+

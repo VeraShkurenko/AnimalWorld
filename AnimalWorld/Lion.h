@@ -7,3 +7,4 @@ public:
     Lion(int power);
     void Eat(Herbivore* herbivore) override;
 };
+

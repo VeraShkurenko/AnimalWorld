@@ -7,4 +7,3 @@ public:
     Wildebeest(int weight, bool life);
     void EatGrass() override;
 };
-

@@ -7,3 +7,4 @@ public:
     unique_ptr<Herbivore> CreateHerbivore() override;
     unique_ptr<Carnivore> CreateCarnivore() override;
 };
+

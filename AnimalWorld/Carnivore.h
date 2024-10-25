@@ -12,3 +12,4 @@ public:
     int GetPower() const;
     void SetPower(int power);
 };
+
