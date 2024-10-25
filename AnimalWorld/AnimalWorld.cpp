@@ -1,24 +1,32 @@
 #include "AnimalWorld.h"
+#include "Continent.h"
+#include <memory>
 using namespace std;
 
-AnimalWorld::AnimalWorld(unique_ptr<Continent> continent) : continent(move(continent)) {}
+AnimalWorld::AnimalWorld(std::unique_ptr<Continent> c) : continent(move(c)) {}
 
-void AnimalWorld::MealsHerbivores()
+void AnimalWorld::MealsHerbivores(int count) 
 {
-    for (const auto& herbivore : continent->GetHerbivores()) 
-    {
+    for (int i = 0; i < count; ++i) {
+        auto herbivore = continent->CreateHerbivore();
         herbivore->EatGrass();
     }
 }
 
-void AnimalWorld::NutritionCarnivores() 
+void AnimalWorld::NutritionCarnivores(int count)
 {
-    for (const auto& carnivore : continent->GetCarnivores())
+    for (int i = 0; i < count; ++i)
     {
-        for (const auto& herbivore : continent->GetHerbivores()) 
+        auto carnivore = continent->CreateCarnivore();
+        auto prey = continent->CreateHerbivore();
+
+        if (carnivore->GetPower() > prey->GetWeight())
         {
-            carnivore->Eat(herbivore.get());
+            carnivore->Eat(prey.get());
+        }
+        else
+        {
+            carnivore->Eat(prey.get());
         }
     }
 }
-
